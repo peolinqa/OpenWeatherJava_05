@@ -4,7 +4,7 @@ import org.testng.Assert;
 import org.testng.annotations.Test;
 import runner.BaseTest;
 
-public class LessonsTest extends BaseTest {
+public class LiudmilaPlucciTest extends BaseTest {
 
     @Test
     public void testH2TagText_WhenSearchingCityCountry() throws InterruptedException {
