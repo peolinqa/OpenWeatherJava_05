@@ -1,12 +1,10 @@
 import org.openqa.selenium.By;
-import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
-import org.openqa.selenium.chrome.ChromeDriver;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 import runner.BaseTest;
 
-public class gaukhar2022Test extends BaseTest {
+public class Gaukhar2022Test extends BaseTest {
 
     @Test
     public void testH2TagText_WhenSearchingCityCountry() throws InterruptedException {
