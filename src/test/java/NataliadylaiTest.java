@@ -1,5 +1,7 @@
 import org.openqa.selenium.By;
+import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.chrome.ChromeDriver;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 import runner.BaseTest;
@@ -14,7 +16,6 @@ public class NataliadylaiTest extends BaseTest {
         String expectedResult = "Paris, FR";
 
 
-
         getDriver().get(url);
         Thread.sleep(5000);
 
@@ -25,7 +26,7 @@ public class NataliadylaiTest extends BaseTest {
         searchCityField.click();
         searchCityField.sendKeys(cityName);
 
-        WebElement searchButton  = getDriver().findElement(By.xpath("//button[@type = 'submit']"));
+        WebElement searchButton = getDriver().findElement(By.xpath("//button[@type = 'submit']"));
         searchButton.click();
         Thread.sleep(2000);
 
@@ -41,5 +42,24 @@ public class NataliadylaiTest extends BaseTest {
         String actualResult = h2CityCountryHeader.getText();
 
         Assert.assertEquals(actualResult, expectedResult);
+    }
+
+    @Test
+    public void test_OpenWeatherMapAPIGuide() throws InterruptedException {
+
+        String url = "https://openweathermap.org/";
+        String expectedResult1 = "https://openweathermap.org/guide";
+        String expectedResult2 = "OpenWeatherMap API guide - OpenWeatherMap";
+        getDriver().get(url);
+        Thread.sleep(5000);
+
+        WebElement guideHeader = getDriver().findElement(
+                By.xpath("//div/ul/li/a[@href = '/guide']"));
+        guideHeader.click();
+        Thread.sleep(2000);
+        String actualResult1 = getDriver().getCurrentUrl();
+        Assert.assertEquals(actualResult1, expectedResult1);
+        String actualResult2 = getDriver().getTitle();
+        Assert.assertEquals(actualResult2, expectedResult2);
     }
 }
