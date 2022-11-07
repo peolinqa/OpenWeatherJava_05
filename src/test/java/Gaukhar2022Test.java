@@ -1,5 +1,7 @@
 import org.openqa.selenium.By;
+import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.chrome.ChromeDriver;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 import runner.BaseTest;
@@ -39,6 +41,26 @@ public class Gaukhar2022Test extends BaseTest {
 
         Thread.sleep(2000);
         String actualResult = h2CityCountryHeader.getText();
+
+        Assert.assertEquals(actualResult, expectedResult);
+    }
+
+    @Test
+    public void testH1TagText_WhenSearchingGuideMenu() throws InterruptedException {
+
+        String url = "https://openweathermap.org/";
+        String expectedResult = "OpenWeatherMap API guide - OpenWeatherMap";
+
+        getDriver().get(url);
+
+        Thread.sleep(5000);
+
+        WebElement GuideMenu = getDriver().findElement(
+                By.xpath("//div[@id = 'desktop-menu']/ul/li[1]/a")
+        );
+        GuideMenu.click();
+
+        String actualResult = getDriver().getTitle();
 
         Assert.assertEquals(actualResult, expectedResult);
     }
