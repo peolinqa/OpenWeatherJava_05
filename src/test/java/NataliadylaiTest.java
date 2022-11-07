@@ -62,4 +62,22 @@ public class NataliadylaiTest extends BaseTest {
         String actualResult2 = getDriver().getTitle();
         Assert.assertEquals(actualResult2, expectedResult2);
     }
+
+    @Test
+    public void testChangingTempUnitInHeading_WhenSwitchTempUnitButton() throws InterruptedException {
+        String url = "https://openweathermap.org/";
+        getDriver().get(url);
+        Thread.sleep(5000);
+        WebElement tempUnit = getDriver().findElement(
+                By.xpath("//div[text()='Imperial: °F, mph']"));
+        tempUnit.click();
+        Thread.sleep(1000);
+        WebElement tempUnitHeading = getDriver().findElement(
+                By.xpath("//div[@class='current-temp']/span"));
+
+        boolean actualResult = tempUnitHeading.getText().contains("°F");
+        Thread.sleep(2000);
+        Assert.assertTrue(actualResult);
+    }
+
 }
