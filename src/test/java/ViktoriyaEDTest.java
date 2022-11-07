@@ -1,5 +1,4 @@
 import org.openqa.selenium.By;
-import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.testng.Assert;
@@ -43,6 +42,22 @@ public class ViktoriyaEDTest extends BaseTest {
         String actualResult = h2CityNameHeader.getText();
 
         Assert.assertEquals(actualResult, expectedResult);
+    }
+
+    @Test
+    public void test_TitleText_WhenChooseMenuGuide() throws InterruptedException {
+
+        String url = "https://openweathermap.org/";
+        String expectedResult = "https://openweathermap.org/guide";
+        String expectedResult1 = "OpenWeatherMap API guide - OpenWeatherMap";
+
+        getDriver().get(url);
+        getDriver().manage().window().maximize();
+        Thread.sleep(6000);
+        getDriver().findElement(By.xpath("//a[@href = '/guide']")).click();
+
+        Assert.assertEquals(getDriver().getCurrentUrl(), expectedResult);
+        Assert.assertEquals(getDriver().getTitle(), expectedResult1);
     }
 }
 
