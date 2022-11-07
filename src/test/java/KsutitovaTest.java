@@ -1,5 +1,7 @@
 import org.openqa.selenium.By;
+import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.chrome.ChromeDriver;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 import runner.BaseTest;
@@ -27,6 +29,31 @@ public class KsutitovaTest extends BaseTest {
 
         Assert.assertEquals(urlGuede, expectedResultUrl);
         Assert.assertEquals(title, expectedResultTitle);
+    }
+
+
+    @Test
+    public void testConfirmTemperatureFaringate() throws InterruptedException {
+
+        String url = "https://openweathermap.org/";
+
+        getDriver().get(url);
+
+        WebElement imperialF = getDriver().findElement(
+                By.xpath("//div[text()='Imperial: °F, mph']")
+        );
+        Thread.sleep(5000);
+        imperialF.click();
+
+        WebElement faringate = getDriver().findElement(
+                By.xpath("//div[@class = 'current-temp']/span")
+        );
+
+        Thread.sleep(5000);
+        String actualResult = faringate.getText();
+
+        Assert.assertTrue(actualResult.contains("F"));
+
     }
 
 }
