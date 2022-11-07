@@ -8,12 +8,11 @@ public class Gaukhar2022Test extends BaseTest {
 
     @Test
     public void testH2TagText_WhenSearchingCityCountry() throws InterruptedException {
-
         String url = "https://openweathermap.org/";
         String cityName = "Paris";
         String expectedResult = "Paris, FR";
 
-        getDriver().get(url); //когда передадим url, то с помощью команды get сможем открыть драйвер
+        getDriver().get(url);
         Thread.sleep(5000);
 
         WebElement searchCityField = getDriver().findElement(
@@ -34,7 +33,6 @@ public class Gaukhar2022Test extends BaseTest {
         );
         parisFRChoiceInDropdownMenu.click();
 
-
         WebElement h2CityCountryHeader = getDriver().findElement(
                 By.xpath("//div[@id = 'weather-widget']//h2")
         );
@@ -42,8 +40,6 @@ public class Gaukhar2022Test extends BaseTest {
         Thread.sleep(2000);
         String actualResult = h2CityCountryHeader.getText();
 
-
         Assert.assertEquals(actualResult, expectedResult);
-
     }
 }
