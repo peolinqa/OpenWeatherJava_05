@@ -1,5 +1,7 @@
 import org.openqa.selenium.By;
+import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.chrome.ChromeDriver;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 import runner.BaseTest;
@@ -39,6 +41,25 @@ public class IrynaKolyadaTest extends BaseTest {
         String actualResult = h2CityCountryHeader.getText();
 
         Assert.assertEquals(actualResult, expectedResult);
+
+    }
+    @Test
+    public void testTemperatureInFahrenheit() throws InterruptedException {
+        String url = "https://openweathermap.org/";
+        Boolean expectedResult = true;
+        String symbolF = "°F";
+
+        getDriver().get(url);
+        Thread.sleep(5000);
+
+        WebElement temperatureF = getDriver().findElement
+                (By.xpath("//div[text()='Imperial: °F, mph']"));
+
+        temperatureF.click();
+        Thread.sleep(2000);
+        WebElement imageTempF = getDriver().findElement(By.xpath("//div[@class ='current-temp']"));
+        Boolean actualResult = imageTempF.getText().contains(symbolF);
+        Assert.assertEquals(actualResult,expectedResult);
 
     }
 
