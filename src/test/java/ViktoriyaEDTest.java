@@ -1,4 +1,5 @@
 import org.openqa.selenium.By;
+import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.testng.Assert;
@@ -58,6 +59,22 @@ public class ViktoriyaEDTest extends BaseTest {
 
         Assert.assertEquals(getDriver().getCurrentUrl(), expectedResult);
         Assert.assertEquals(getDriver().getTitle(), expectedResult1);
+    }
+
+    @Test
+    public void test_CheckWeather_WhenChooseFahrenheit() throws InterruptedException {
+
+        String url = "https://openweathermap.org/";
+        String expectedResult = "°F";
+
+        getDriver().get(url);
+        Thread.sleep(6000);
+
+        getDriver().findElement(By.xpath("//div[@class='switch-container']/div[3]")).click();
+        WebElement weatherInF = getDriver().findElement(By.xpath("//span[@class='heading']"));
+        Thread.sleep(2000);
+
+        Assert.assertTrue(weatherInF.getText().contains(expectedResult));
     }
 }
 
