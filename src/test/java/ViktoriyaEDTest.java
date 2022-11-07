@@ -76,6 +76,34 @@ public class ViktoriyaEDTest extends BaseTest {
 
         Assert.assertTrue(weatherInF.getText().contains(expectedResult));
     }
+
+    @Test
+    public void test_CheckCookiesText() throws InterruptedException {
+
+        String url = "https://openweathermap.org/";
+        String expectedResult = "We use cookies which are essential for the site to work. We also use non-essential " +
+                "cookies to help us improve our services. Any data collected is anonymised. You can allow all cookies " +
+                "or manage them individually.";
+        String expectedResult1 = "Allow all";
+        String expectedResult3 = "Manage cookies";
+
+        getDriver().get(url);
+        Thread.sleep(6000);
+
+        Assert.assertTrue(getDriver().findElement(By.className("stick-footer-panel__container")).isDisplayed());
+
+        WebElement cookiesText = getDriver().findElement(By.xpath("//div[@id='stick-footer-panel']//p"));
+        WebElement allowAllButton = getDriver().findElement(
+                By.xpath("//div[@id='stick-footer-panel']//button")
+        );
+        WebElement manageCookiesButton = getDriver().findElement(
+                By.xpath("//div[@id='stick-footer-panel']//a[@href='/cookies-settings']")
+        );
+
+        Assert.assertEquals(cookiesText.getText(), expectedResult);
+        Assert.assertEquals(allowAllButton.getText(), expectedResult1);
+        Assert.assertEquals(manageCookiesButton.getText(), expectedResult3);
+    }
 }
 
 
