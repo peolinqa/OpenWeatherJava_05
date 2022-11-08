@@ -41,6 +41,7 @@ public class ElNov686Test extends BaseTest {
 
         Assert.assertEquals(actualResult, expectedResult);
     }
+
     @Test
     public void testTemperatureImperialFahrenheitVerify() throws InterruptedException {
         String url = "https://openweathermap.org/";
