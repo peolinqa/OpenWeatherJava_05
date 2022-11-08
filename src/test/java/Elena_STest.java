@@ -27,41 +27,39 @@ public class Elena_STest extends BaseTest {
         );
         searchButton.click();
         Thread.sleep(1000);
-
         WebElement choiceDropDownMenuParisFrance = getDriver().findElement(
                 By.xpath("//ul[@class='search-dropdown-menu']/li/span[text()='Paris, FR ']")
         );
         choiceDropDownMenuParisFrance.click();
-
         WebElement h2CityCountryHeader = getDriver().findElement(
                 By.xpath("//div[@id='weather-widget']//h2")
         );
         Thread.sleep(5000);
-
         String actualResult = h2CityCountryHeader.getText();
 
         Assert.assertEquals(actualResult,expectedResult);
-
-    }
+        }
 
     @Test
-    public void testOpenWeatherPageGuidMaximixe() throws InterruptedException {
-
+    public void testTemperatureFormatSelectionInFahrenheit() throws InterruptedException {
         String url = "https://openweathermap.org/";
-        String expectedURL = "https://openweathermap.org/guide";
-        String expectedResult = "OpenWeatherMap API guide - OpenWeatherMap";
         getDriver().get(url);
-//        getDriver().manage().window().maximize(); //Maximize current window
-        WebElement searchButtonGUid = getDriver().findElement(
-                By.xpath("//div[@id='desktop-menu']/ul/li/a[@href='/guide']")
+        WebElement switchToFahrenheit = getDriver().findElement(
+                By.xpath("//div[@class='option'][text()='Imperial: °F, mph']")
         );
-
         Thread.sleep(5000);
-        searchButtonGUid.click();
-        String actualResultURL = getDriver().getCurrentUrl();
-        String actualResult = getDriver().getTitle();
-        Assert.assertEquals(actualResultURL,expectedURL);
-        Assert.assertEquals(actualResult,expectedResult);
+        switchToFahrenheit.click();
+        char expectedResult = 'F';
+        WebElement findFahrenheit = getDriver().findElement(
+                By.xpath("//span[@class='heading'][contains(text(),'F')]")
+        );
+        String result = findFahrenheit.getText();
+        char actualResult = result.charAt(result.length()-1);
 
+        Assert.assertEquals(actualResult,expectedResult);
     }
+
+
+
 }
+
