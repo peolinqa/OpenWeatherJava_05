@@ -8,7 +8,8 @@ public class MaxIaskoTest extends BaseTest {
 
     @Test
     public void testSearch30OrangeButtons() throws InterruptedException {
-        String url = "http://openweathermap.org/";
+
+        String url = "https://openweathermap.org/";
 
         getDriver().get(url);
         int expectedResult = 30;
@@ -22,8 +23,25 @@ public class MaxIaskoTest extends BaseTest {
                 By.xpath("//a[contains(@class, 'btn_block orange round') " +
                         "or contains(@class, 'ow-btn round btn-orange')]")).size();
 
-        Assert.assertEquals(actualResult,expectedResult);
+        Assert.assertEquals(actualResult, expectedResult);
+    }
+
+    @Test
+    public void testConfirmLinkNoChangeByLogoClick() throws InterruptedException {
+
+        String url = "https://openweathermap.org/";
+
+        getDriver().get(url);
+        Thread.sleep(7000);
+
+        WebElement searchLogoField = getDriver().findElement(By.xpath("//a[@href ='/']"));
+        searchLogoField.click();
+
+        String actualResult = getDriver().getCurrentUrl();
+        Assert.assertEquals(actualResult, url);
     }
 }
+
+
 
 
