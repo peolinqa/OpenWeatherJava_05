@@ -173,5 +173,29 @@ public class ViktoriyaEDTest extends BaseTest {
 
         Assert.assertEquals(actualResult, expectedResult);
     }
+
+    @Test
+    public void test_SwitchFahrenheitToCelsius() throws InterruptedException {
+
+        String url = "https://openweathermap.org/";
+        Boolean expectedResult = true;
+
+        getDriver().get(url);
+        Thread.sleep(5000);
+
+        getDriver().findElement(By.xpath("//div[text()='Imperial: °F, mph']")).click();
+        WebElement displayCurrentWeather = getDriver().findElement(By.xpath("//div[@class='current-temp']/span"));
+
+        Assert.assertEquals(displayCurrentWeather.getText().contains("°F"), expectedResult);
+
+        getDriver().findElement(By.xpath("//div[text()='Metric: °C, m/s']")).click();
+
+        Assert.assertEquals(displayCurrentWeather.getText().contains("°C"), expectedResult);
+    }
 }
+
+
+
+
+
 
