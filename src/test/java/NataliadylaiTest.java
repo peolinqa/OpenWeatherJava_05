@@ -79,5 +79,26 @@ public class NataliadylaiTest extends BaseTest {
         Thread.sleep(2000);
         Assert.assertTrue(actualResult);
     }
-
+    @Test
+    public void test_ConfirmCookiesOnTheFooter() throws InterruptedException {
+        String url = "https://openweathermap.org/";
+        String expectedResult = "We use cookies which are essential for the site to work. We also use non-essential cookies to help us improve our services. Any data collected is anonymised. You can allow all cookies or manage them individually.";
+        String button1 = "Allow";
+        String button2 = "Manage cookies";
+        getDriver().get(url);
+        getDriver().manage().window().maximize();
+        Thread.sleep(5000);
+        Assert.assertTrue(getDriver().findElement(By.className("stick-footer-panel__container")).isDisplayed());
+        Assert.assertEquals(getDriver().findElements(
+                By.xpath("//div[@class = 'stick-footer-panel__btn-container']/*")).size(), 2);
+        WebElement cookies = getDriver().findElement(
+                By.className("stick-footer-panel__description"));
+        String actualResult = cookies.getText();
+        Assert.assertEquals(actualResult,expectedResult);
+        Thread.sleep(2000);
+        Assert.assertTrue(getDriver().findElement(
+                By.xpath("//div[@class = 'stick-footer-panel__btn-container']/*[text() = 'Allow all']")).isDisplayed());
+        Assert.assertTrue(getDriver().findElement(
+                By.xpath("//div[@class = 'stick-footer-panel__btn-container']/*[text() = ' Manage cookies ']")).isDisplayed());
+    }
 }
