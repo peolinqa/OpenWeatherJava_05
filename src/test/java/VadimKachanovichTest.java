@@ -40,6 +40,26 @@ public class VadimKachanovichTest extends BaseTest {
         String actualResult = h2CityCountryHeader.getText();
 
         Assert.assertEquals(actualResult, expectedResult);
+    }
 
+    @Test
+    public void testCheckTitleName() throws InterruptedException {
+
+        String url = "https://openweathermap.org/";
+        String expectedGuideLink = "https://openweathermap.org/guide";
+        String expectedTitle = "OpenWeatherMap API guide - OpenWeatherMap";
+
+        getDriver().get(url);
+        WebElement guideTab = getDriver().findElement(
+                By.xpath("//div[@id='desktop-menu']//li/a[@href='/guide']")
+        );
+        Thread.sleep(5000);
+        guideTab.click();
+        Thread.sleep(2000);
+        String actualGuideLink = getDriver().getCurrentUrl();
+        Thread.sleep(5000);
+        String actualTitle = getDriver().getTitle();
+        Assert.assertEquals(actualGuideLink, expectedGuideLink);
+        Assert.assertEquals(actualTitle, expectedTitle);
     }
 }
