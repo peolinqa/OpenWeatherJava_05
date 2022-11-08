@@ -16,7 +16,6 @@ public class LinavolovickTest extends BaseTest {
         getDriver().get(url);
         Thread.sleep(5000);
 
-
         WebElement searchCityField = getDriver().findElement(
                 By.xpath("//div[@id = 'weather-widget']//input[@placeholder = 'Search city']")
         );
