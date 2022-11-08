@@ -1,4 +1,5 @@
 import org.openqa.selenium.By;
+import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebElement;
 import org.testng.Assert;
 import org.testng.annotations.Test;
@@ -30,6 +31,7 @@ public class DimaZadrutsiyTest extends BaseTest {
                         + "='Paris, FR ']"));
         firstChoiesInDropdownMenu.click();
 
+        Thread.sleep(4000);
         WebElement h2CityCountryHeader = getDriver().findElement(
                 By.xpath("//div[@id='weather-widget']//h2"));
 
@@ -55,6 +57,38 @@ public class DimaZadrutsiyTest extends BaseTest {
         WebElement loading = getDriver().findElement(By.xpath("//div[@aria-label='Loading']"));
 
         String actualResult = loading.getAttribute("aria-label");
+
+        Assert.assertEquals(actualResult, expectedResult);
+    }
+
+    @Test
+    public void testIconCurrentLocation() throws InterruptedException {
+
+        String url = "https://openweathermap.org/";
+
+        String cityName = "Norway";
+        String expectedResult = "London, GB";
+
+        getDriver().get(url);
+
+        Thread.sleep(7000);
+        WebElement findCity = getDriver().findElement(By.xpath("//div//input[@placeholder='Search city']"));
+        findCity.click();
+        findCity.sendKeys(cityName);
+        findCity.sendKeys(Keys.ENTER);
+
+        Thread.sleep(4000);
+        WebElement chooseCity = getDriver().findElement(By.xpath("//ul//span[text()='45.787, -87.904']"));
+        chooseCity.click();
+
+        Thread.sleep(4000);
+        WebElement pressCurrentLocation = getDriver().findElement(By.xpath("//div[@class='control-el']"));
+        pressCurrentLocation.click();
+
+        Thread.sleep(7000);
+        WebElement actualLocation = getDriver().findElement(By.xpath("//h2[@data-v-3e6e9f12]"));
+
+        String actualResult = actualLocation.getText();
 
         Assert.assertEquals(actualResult, expectedResult);
     }
