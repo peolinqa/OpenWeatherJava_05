@@ -77,4 +77,58 @@ public class OlgaKhliupinaTest extends BaseTest {
 
       Assert.assertEquals(actualResult_ManageCookies, expectedResult_ButtonManageCookies);
    }
+
+   @Test
+   public void testError_WhenSubmitInSupportWithoutCaptcha() throws InterruptedException {
+
+      String url = "https://openweathermap.org/";
+      String eMail = "tester@test.com";
+      String subject = "Other";
+      String message = "lalala";
+      String expectedResult = "reCAPTCHA verification failed, please try again.";
+
+      getDriver().manage().window().maximize();
+      getDriver().get(url);
+      Thread.sleep(   5000);
+
+      WebElement menuSupport = getDriver().findElement(By.xpath("//div[@id='support-dropdown']"));
+      menuSupport.click();
+      Thread.sleep(500);
+
+      WebElement dropDownAskAQuestion = getDriver().findElement(
+              By.xpath("//ul[@id='support-dropdown-menu']/li/a[@href='https://home.openweathermap.org/questions']"));
+      dropDownAskAQuestion.click();
+      Thread.sleep(5000);
+
+      String originalWindow = getDriver().getWindowHandle();
+
+      for (String windowHandle : getDriver().getWindowHandles()) {
+         if (!originalWindow.equals(windowHandle)) {
+            getDriver().switchTo().window(windowHandle);
+            break;
+         }
+      }
+      Thread.sleep(3000);
+
+      WebElement emailField = getDriver().findElement(By.id("question_form_email"));
+      emailField.click();
+      emailField.sendKeys(eMail);
+
+      WebElement subjectField = getDriver().findElement(By.id("question_form_subject"));
+      subjectField.click();
+      subjectField.sendKeys(subject);
+
+      WebElement messageField = getDriver().findElement(By.id("question_form_message"));
+      messageField.click();
+      messageField.sendKeys(message);
+
+      WebElement submitButton = getDriver().findElement(By.xpath("//div/input[@type='submit']"));
+      submitButton.click();
+
+      WebElement errorText = getDriver().findElement(By.xpath("//div[@class = 'help-block']"));
+
+      Assert.assertEquals(errorText.getText(), expectedResult);
+
+      getDriver().close();
+   }
 }
