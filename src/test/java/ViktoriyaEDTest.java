@@ -2,10 +2,14 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 import runner.BaseTest;
 
+import java.time.Duration;
+import java.util.ArrayList;
 import java.util.List;
 
 public class ViktoriyaEDTest extends BaseTest {
@@ -136,6 +140,38 @@ public class ViktoriyaEDTest extends BaseTest {
         Assert.assertEquals(FAQ.getText(), expectedResult);
         Assert.assertEquals(HowToStart.getText(), expectedResult1);
         Assert.assertEquals(AskAQuestion.getText(), expectedResult2);
+    }
+
+    @Test
+    public void test_ClickSubmitWithoutCaptcha() throws InterruptedException {
+
+        String url = "https://openweathermap.org/";
+
+        String emailTest = "tester@test.com";
+        String message = "This is test";
+        String expectedResult = "reCAPTCHA verification failed, please try again.";
+
+        getDriver().get(url);
+        getDriver().manage().window().maximize();
+        Thread.sleep(6000);
+
+        getDriver().findElement(By.xpath("//div[@id='support-dropdown']")).click();
+        getDriver().findElement(By.linkText("Ask a question")).click();
+
+        List<String> tabs = new ArrayList<>(getDriver().getWindowHandles());
+        Assert.assertEquals(tabs.size(), 2);
+        getDriver().switchTo().window(tabs.get(1));
+        WebDriverWait wait = new WebDriverWait(getDriver(), Duration.ofSeconds(5));
+        wait.until(ExpectedConditions.presenceOfElementLocated(By.xpath("//input[@id='question_form_email']")));
+
+        getDriver().findElement(By.id("question_form_email")).sendKeys(emailTest);
+        getDriver().findElement(By.xpath("//select[@id='question_form_subject']")).click();
+        getDriver().findElement(By.xpath("//select[@id='question_form_subject']//option[text()='Other']")).click();
+        getDriver().findElement(By.xpath("//textarea[@id='question_form_message']")).sendKeys(message);
+        getDriver().findElement(By.xpath("//input[@data-disable-with='Create Question form']")).click();
+        String actualResult = getDriver().findElement(By.xpath("//div[@class='help-block']")).getText();
+
+        Assert.assertEquals(actualResult, expectedResult);
     }
 }
 
