@@ -1,10 +1,11 @@
 import org.openqa.selenium.By;
+import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebElement;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 import runner.BaseTest;
 
-public class GordonTest extends BaseTest {
+public class GordonWhiteTest extends BaseTest {
 
     @Test
     public void testH2TagText_WhenSearchingCityCountry() throws InterruptedException {
@@ -37,6 +38,30 @@ public class GordonTest extends BaseTest {
         );
         Thread.sleep(2000);
         String actualResult = h2CityCountryHeader.getText();
+
+        Assert.assertEquals(actualResult, expectedResult);
+    }
+
+    @Test
+    public void testSearchFieldWithTextOnMainPageWhenPressEnter() throws InterruptedException {
+        String url = "https://openweathermap.org/";
+        String cityName = "Rome";
+        String wordName = "find";
+        boolean expectedResult = true;
+
+        getDriver().get(url);
+        Thread.sleep(5000);
+
+        WebElement searchCityField = getDriver().findElement(
+                By.xpath("//ul[@id='first-level-nav']//input[@type='text']")
+        );
+        searchCityField.click();
+        searchCityField.sendKeys(cityName);
+        searchCityField.sendKeys(Keys.RETURN);
+        Thread.sleep(1000);
+
+        String currentUrl = getDriver().getCurrentUrl();
+        boolean actualResult = currentUrl.contains(cityName) && currentUrl.contains(wordName);
 
         Assert.assertEquals(actualResult, expectedResult);
     }
