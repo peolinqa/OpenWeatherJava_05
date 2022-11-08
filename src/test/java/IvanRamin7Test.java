@@ -37,6 +37,5 @@ public class IvanRamin7Test extends BaseTest {
 
 
         Assert.assertEquals(actualResult, expectedResult);
-        getDriver().quit();
     }
 }
