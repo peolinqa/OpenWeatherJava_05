@@ -9,7 +9,6 @@ import runner.BaseTest;
 public class Elena_STest extends BaseTest {
     @Test
     public void testH2TagText_WhenSearchingCityCountry() throws InterruptedException {
-
         String url = "https://openweathermap.org/";
         String cityName = "Paris";
         String expectedResult = "Paris, FR";
@@ -56,6 +55,25 @@ public class Elena_STest extends BaseTest {
         String result = findFahrenheit.getText();
         char actualResult = result.charAt(result.length()-1);
 
+        Assert.assertEquals(actualResult,expectedResult);
+    }
+
+    @Test
+    public void testOpenWeatherPageGuidMaximize() throws InterruptedException {
+        String url = "https://openweathermap.org/";
+        String expectedURL = "https://openweathermap.org/guide";
+        String expectedResult = "OpenWeatherMap API guide - OpenWeatherMap";
+        getDriver().get(url);
+        getDriver().manage().window().maximize(); //Maximize current window
+        WebElement searchButtonGUid = getDriver().findElement(
+                By.xpath("//div[@id='desktop-menu']/ul/li/a[@href='/guide']")
+        );
+        Thread.sleep(5000);
+        searchButtonGUid.click();
+        String actualResultURL = getDriver().getCurrentUrl();
+        String actualResult = getDriver().getTitle();
+
+        Assert.assertEquals(actualResultURL,expectedURL);
         Assert.assertEquals(actualResult,expectedResult);
     }
 
