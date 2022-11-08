@@ -45,4 +45,30 @@ public class AnzhelikaBaaTest extends BaseTest {
         Assert.assertEquals(actualResult, expectedResult);
 
         }
+
+    @Test
+    public void test_OpenWeatherMapAPIGuide() throws InterruptedException {
+
+        String url = "https://openweathermap.org/";
+        String expectedResult1 = "https://openweathermap.org/guide";
+        String expectedResult2 = "OpenWeatherMap API guide - OpenWeatherMap";
+
+        getDriver().get(url);
+        Thread.sleep(5000);
+
+        WebElement guideButton = getDriver().findElement(
+                By.xpath("//div[@id= 'desktop-menu']//a[@href='/guide']")
+        );
+        guideButton.click();
+        Thread.sleep(5000);
+
+        String actualResult1 = getDriver().getCurrentUrl();
+        String actualResult2 = getDriver().getTitle();
+
+        Assert.assertEquals(actualResult1, expectedResult1);
+        Assert.assertEquals(actualResult2, expectedResult2);
+
+    }
+
+
 }
