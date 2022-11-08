@@ -43,4 +43,26 @@ public class LinavolovickTest extends BaseTest {
 
         Assert.assertEquals(actualResult, expectedResult);
     }
+
+    @Test
+    public void testGuideUrlAndTitle() throws InterruptedException {
+
+        String url = "https://openweathermap.org/guide";
+        String expectedResultUrl = "https://openweathermap.org/guide";
+        String expectedResultTitle = "OpenWeatherMap API guide - OpenWeatherMap";
+
+        getDriver().get(url);
+
+        WebElement guideElementMenu = getDriver().findElement(
+                By.xpath("//a[@href='/guide']")
+        );
+
+        guideElementMenu.click();
+
+        String actualResultUrl = getDriver().getCurrentUrl();
+        String actualResultTitle = getDriver().getTitle();
+
+        Assert.assertEquals(actualResultUrl, expectedResultUrl);
+        Assert.assertEquals(actualResultTitle, expectedResultTitle);
+    }
 }
