@@ -1,7 +1,5 @@
 import org.openqa.selenium.By;
-import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
-import org.openqa.selenium.chrome.ChromeDriver;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 import runner.BaseTest;
@@ -64,7 +62,7 @@ public class Elena_STest extends BaseTest {
         String expectedURL = "https://openweathermap.org/guide";
         String expectedResult = "OpenWeatherMap API guide - OpenWeatherMap";
         getDriver().get(url);
-        getDriver().manage().window().maximize(); //Maximize current window
+        getDriver().manage().window().maximize();
         WebElement searchButtonGUid = getDriver().findElement(
                 By.xpath("//div[@id='desktop-menu']/ul/li/a[@href='/guide']")
         );
@@ -76,6 +74,32 @@ public class Elena_STest extends BaseTest {
         Assert.assertEquals(actualResultURL,expectedURL);
         Assert.assertEquals(actualResult,expectedResult);
     }
+
+    @Test
+    public void testApprovinfButtonsAllow_allAndManage_cookies(){
+        String url = "https://openweathermap.org/";
+        getDriver().get(url);
+        String expectedResultPanelText = "We use cookies which are essential for the site to work. We also use non-essential" +
+                " cookies to help us improve our services. Any data collected is anonymised. You can allow all cookies" +
+                " or manage them individually.";
+        String expectedResultAllowAll = "Allow all";
+        String expectedResultManageCookies = "Manage cookies";
+        WebElement panelText = getDriver().findElement(
+                By.xpath("//p[@class='stick-footer-panel__description']")
+        );
+        String actualResultPanelText = panelText.getText();
+        WebElement buttonAllowAll = getDriver().findElement(
+                By.xpath("//button[@class='stick-footer-panel__link']")
+        );
+        String actualResultAllowAll = buttonAllowAll.getText();
+        WebElement buttonManageCookies = getDriver().findElement(
+                By.xpath("//a[@class='stick-footer-panel__link'][text()=' Manage cookies ']"));
+        String actualResultManageCookies = buttonManageCookies.getText();
+
+        Assert.assertEquals(actualResultPanelText,expectedResultPanelText);
+        Assert.assertEquals(actualResultAllowAll,expectedResultAllowAll);
+        Assert.assertEquals(actualResultManageCookies,expectedResultManageCookies);
+         }
 
 
 
