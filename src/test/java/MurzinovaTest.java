@@ -1,5 +1,7 @@
 import org.openqa.selenium.By;
+import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.chrome.ChromeDriver;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 import runner.BaseTest;
@@ -44,5 +46,26 @@ public class MurzinovaTest extends BaseTest {
 
 
         Assert.assertEquals(actualResult, expectedResult);
+    }
+
+    @Test
+    public void testRedirectingToAPIGuidePage() throws InterruptedException {
+        String urlBasic = "https://openweathermap.org/";
+        String expectedResult = "OpenWeatherMap API guide - OpenWeatherMap";
+
+        getDriver().get(urlBasic);
+        getDriver().manage().window().maximize();
+        Thread.sleep(5000);
+
+        WebElement guideLink = getDriver().findElement(
+                By.xpath("//div[@id='desktop-menu']//a[@href='/guide']"));
+        guideLink.click();
+
+        String actualResult = getDriver().getTitle();
+        Assert.assertEquals(actualResult,expectedResult);
+
+        expectedResult = "https://openweathermap.org/guide";
+        actualResult = getDriver().getCurrentUrl();
+        Assert.assertEquals(actualResult,expectedResult);
     }
 }
