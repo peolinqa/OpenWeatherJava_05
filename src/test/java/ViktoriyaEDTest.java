@@ -6,6 +6,8 @@ import org.testng.Assert;
 import org.testng.annotations.Test;
 import runner.BaseTest;
 
+import java.util.List;
+
 public class ViktoriyaEDTest extends BaseTest {
 
     @Test
@@ -104,6 +106,36 @@ public class ViktoriyaEDTest extends BaseTest {
         Assert.assertEquals(allowAllButton.getText(), expectedResult1);
         Assert.assertEquals(manageCookiesButton.getText(), expectedResult3);
     }
-}
 
+    @Test
+    public void testSupportDropDownMenu() throws InterruptedException {
+
+        String url = "https://openweathermap.org/";
+
+        String expectedResult = "FAQ";
+        String expectedResult1 = "How to start";
+        String expectedResult2 = "Ask a question";
+
+        getDriver().get(url);
+        getDriver().manage().window().maximize();
+        Thread.sleep(6000);
+
+        WebElement menuSupportDropDown = getDriver().findElement(By.xpath("//div[@id='support-dropdown']"));
+        menuSupportDropDown.click();
+
+        WebElement FAQ = getDriver().findElement(
+                By.xpath("//ul[@id='support-dropdown-menu']//a[@href='/faq']")
+        );
+        WebElement HowToStart = getDriver().findElement(
+                By.xpath("//ul[@id='support-dropdown-menu']//a[@href='/appid']")
+        );
+        WebElement AskAQuestion = getDriver().findElement(
+                By.xpath("//ul[@id='support-dropdown-menu']//a[@target='_blank']")
+        );
+
+        Assert.assertEquals(FAQ.getText(), expectedResult);
+        Assert.assertEquals(HowToStart.getText(), expectedResult1);
+        Assert.assertEquals(AskAQuestion.getText(), expectedResult2);
+    }
+}
 
