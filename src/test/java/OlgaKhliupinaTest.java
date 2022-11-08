@@ -128,7 +128,5 @@ public class OlgaKhliupinaTest extends BaseTest {
       WebElement errorText = getDriver().findElement(By.xpath("//div[@class = 'help-block']"));
 
       Assert.assertEquals(errorText.getText(), expectedResult);
-
-      getDriver().close();
    }
 }
