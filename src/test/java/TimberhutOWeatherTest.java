@@ -4,7 +4,7 @@ import org.testng.Assert;
 import org.testng.annotations.Test;
 import runner.BaseTest;
 
-public class Timberhut_OWeatherTest extends BaseTest{
+public class TimberhutOWeatherTest extends BaseTest {
 
         @Test
         public void test_SearchingCityCountry() throws InterruptedException {
@@ -41,4 +41,3 @@ public class Timberhut_OWeatherTest extends BaseTest{
             Assert.assertEquals(h2CityCountryHeader.getText(), expectedResult);
         }
 }
-
