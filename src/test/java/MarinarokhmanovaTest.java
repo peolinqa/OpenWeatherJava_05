@@ -42,4 +42,28 @@ public class MarinarokhmanovaTest extends BaseTest {
 
         Assert.assertEquals(actualResult, expectedResult);
     }
+    @Test
+    public void testOpenWeatherMapGuide() throws InterruptedException {
+        String url = "https://openweathermap.org/";
+        String expectedResult1 = "https://openweathermap.org/guide";
+        String expectedResult2 = "OpenWeatherMap API guide - OpenWeatherMap";
+
+        getDriver().get(url);
+        getDriver().manage().window().maximize();
+        Thread.sleep(5000);
+
+        WebElement guideSearchField = getDriver().findElement(
+                By.xpath("//a[@href][text()='Guide']")
+        );
+        guideSearchField.click();
+        Thread.sleep(2000);
+
+        String confirmPageWithLink = getDriver().getTitle();
+
+        String actualResult1 = getDriver().getCurrentUrl();
+        String actualResult2 = confirmPageWithLink.intern();
+
+        Assert.assertEquals(actualResult1, expectedResult1);
+        Assert.assertEquals(actualResult2, expectedResult2);
+    }
 }
