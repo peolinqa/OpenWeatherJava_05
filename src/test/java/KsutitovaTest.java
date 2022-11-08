@@ -36,6 +36,7 @@ public class KsutitovaTest extends BaseTest {
         String url = "https://openweathermap.org/";
 
         getDriver().get(url);
+        Thread.sleep(5000);
 
         WebElement imperialF = getDriver().findElement(
                 By.xpath("//div[text()='Imperial: °F, mph']")
