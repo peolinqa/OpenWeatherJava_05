@@ -68,4 +68,28 @@ public class ElenaHoustonTest extends BaseTest {
         Assert.assertEquals(actualResult1, expectedResult1);
         Assert.assertEquals(actualResult2, expectedResult2);
     }
+
+    @Test
+    public void testUnitsOfMeasurement_ImperialFMphConfirmFLondon() throws InterruptedException {
+        String url = "https://openweathermap.org/";
+        String fTempSymbol = "°F";
+        String expectedResult = "°F";
+
+        getDriver().get(url);
+        getDriver().manage().window().maximize();
+        Thread.sleep(5000);
+
+        WebElement pushImperialFahrenheit = getDriver().findElement(By.xpath("//div[@class = 'switch-container']//div"
+                + "[text()= 'Imperial: °F, mph']")
+        );
+        pushImperialFahrenheit.click();
+
+        WebElement tempInF = getDriver().findElement(By.xpath("//div[@class='current-temp']/span")
+        );
+        String tempF = tempInF.getText();
+        String actualResult = tempF.substring((tempF.length()-2));
+
+        Assert.assertTrue(tempInF.getText().contains(fTempSymbol));
+        Assert.assertEquals(actualResult, expectedResult);
+    }
 }
