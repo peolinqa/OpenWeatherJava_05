@@ -31,5 +31,24 @@ public class Dasha1991Test extends BaseTest {
         Assert.assertEquals(actualResult2, expectedResult2);
 
     }
+    @Test
+    public void testTemperatureF() throws InterruptedException {
 
+        String url = "https://openweathermap.org/";
+
+        getDriver().get(url);
+        getDriver().manage().window().maximize();
+        Thread.sleep(5000);
+
+        WebElement temperatureF = getDriver().findElement(By.xpath("//div[@class = 'option'][2]"));
+
+        temperatureF.click();
+        Thread.sleep(2000);
+
+        WebElement imageFTemperature = getDriver().findElement(By.xpath("//span[@class = 'heading']"));
+
+        boolean actualResult = imageFTemperature.getText().contains("°F");
+        Assert.assertTrue(actualResult);
+
+    }
 }
