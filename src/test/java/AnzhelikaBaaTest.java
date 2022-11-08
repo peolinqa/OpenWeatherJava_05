@@ -5,8 +5,6 @@ import org.testng.annotations.Test;
 import runner.BaseTest;
 
 public class AnzhelikaBaaTest extends BaseTest {
-
-
     @Test
     public void testH2TagText_WhenSearchingCityCountry() throws InterruptedException {
 
@@ -45,7 +43,6 @@ public class AnzhelikaBaaTest extends BaseTest {
         Assert.assertEquals(actualResult, expectedResult);
 
         }
-
     @Test
     public void test_OpenWeatherMapAPIGuide() throws InterruptedException {
 
@@ -67,8 +64,31 @@ public class AnzhelikaBaaTest extends BaseTest {
 
         Assert.assertEquals(actualResult1, expectedResult1);
         Assert.assertEquals(actualResult2, expectedResult2);
-
     }
+    @Test
+    public void testTempDisplayInF_WhenPressingFUnitsButton() throws InterruptedException {
 
+        String url = "https://openweathermap.org/";
+        String fTempSymbol = "°F";
+        boolean expectedResult = true;
 
+        getDriver().get(url);
+        getDriver().manage().window().maximize();
+        Thread.sleep(5000);
+
+        WebElement fUnitsButton = getDriver().findElement(
+                By.xpath("//div[@class='switch-container']//div[text()='Imperial: °F, mph']")
+        );
+        fUnitsButton.click();
+
+        Thread.sleep(5000);
+        WebElement tempForCityInF = getDriver().findElement(
+                By.xpath("//span[@class='heading'][contains(text(),'°F')]")
+        );
+
+        Thread.sleep(3000);
+        boolean actualResult = tempForCityInF.getText().contains(fTempSymbol);
+
+        Assert.assertEquals(actualResult, expectedResult);
+    }
 }
