@@ -62,5 +62,35 @@ public class IrynaKolyadaTest extends BaseTest {
         Assert.assertEquals(actualResult,expectedResult);
 
     }
+    @Test
+    public void testConfirmFooterText() throws InterruptedException {
+        String url = "https://openweathermap.org/";
+        String expectedResult = "We use cookies which are essential for the site to work. " +
+                "We also use non-essential cookies to help us improve our services. " +
+                "Any data collected is anonymised. You can allow all cookies or manage them individually.";
+        String expectedResult1 = "Allow all";
+        String expectedResult2 = "Manage cookies";
+
+        getDriver().get(url);
+        Thread.sleep(3000);
+        Assert.assertTrue(getDriver().findElement
+                (By.xpath("//div[@id='stick-footer-panel']//div[@class='container']")).isDisplayed());
+
+        WebElement textFooter = getDriver().findElement(By.className("stick-footer-panel__description"));
+        String actualResult = textFooter.getText();
+        Assert.assertEquals(actualResult, expectedResult);
+
+        Assert.assertEquals(getDriver().findElements
+                (By.xpath("//div[@class='stick-footer-panel__btn-container']/*")).size(),2);
+
+        WebElement buttonAllowAllFooter = getDriver().findElement(By.xpath("//button[@type='button']"));
+        String actualResult1 = buttonAllowAllFooter.getText();
+
+        Assert.assertEquals(actualResult1, expectedResult1);
+        WebElement buttonManageCookiesFooter =getDriver().findElement
+                (By.xpath("//a[@href='/cookies-settings']"));
+
+        Assert.assertEquals(buttonManageCookiesFooter.getText(), expectedResult2);
+    }
 
 }
