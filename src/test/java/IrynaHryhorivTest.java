@@ -1,11 +1,10 @@
-package runner;
-
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 import org.testng.Assert;
 import org.testng.annotations.Test;
+import runner.BaseTest;
 
-public class IrynaHryhorivTest extends BaseTest{
+public class IrynaHryhorivTest extends BaseTest {
     @Test
     public void testH2Text_WhenSearchingCityCountry() throws InterruptedException {
 
