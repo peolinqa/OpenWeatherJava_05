@@ -7,6 +7,25 @@ import runner.BaseTest;
 public class OlgaKhliupinaTest extends BaseTest {
 
    @Test
+   public void testLinkAndTitle_WhenGoingToGuideMenu() throws InterruptedException {
+
+      String url = "https://openweathermap.org/";
+      String expectedResultUrl = "https://openweathermap.org/guide";
+      String expectedResultTitle = "OpenWeatherMap API guide - OpenWeatherMap";
+
+      getDriver().manage().window().maximize();
+      getDriver().get(url);
+      Thread.sleep(5000);
+
+      WebElement menuGuide = getDriver().findElement(By.xpath("//div/ul//li/a[@href='/guide']"));
+      menuGuide.click();
+      Thread.sleep(1000);
+
+      Assert.assertEquals(getDriver().getCurrentUrl(), expectedResultUrl);
+      Assert.assertEquals(getDriver().getTitle(), expectedResultTitle);
+   }
+
+   @Test
    public void testH2TagText_WhenSearchingCityCountry() throws InterruptedException {
 
       String url = "https://openweathermap.org/";
