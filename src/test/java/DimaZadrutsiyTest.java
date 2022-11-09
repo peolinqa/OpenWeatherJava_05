@@ -48,7 +48,7 @@ public class DimaZadrutsiyTest extends BaseTest {
         String expectedResult = "Loading";
 
         getDriver().get(url);
-        Thread.sleep(5000);
+        Thread.sleep(7000);
 
         WebElement clickOnTheLogo = getDriver().findElement(By.xpath(
                 "//a[@href='/']/img[@src='/themes/openweathermap/assets/img/logo_white_cropped.png']"));

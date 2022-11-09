@@ -34,7 +34,7 @@ public class OlgaKhliupinaTest extends BaseTest {
 
       getDriver().manage().window().maximize();
       getDriver().get(url);
-      Thread.sleep(6000);
+      Thread.sleep(7000);
 
       WebElement searchCityField = getDriver().findElement(
               By.xpath("//div[@id='weather-widget']//input[@placeholder='Search city']"));
@@ -70,7 +70,7 @@ public class OlgaKhliupinaTest extends BaseTest {
 
       getDriver().manage().window().maximize();
       getDriver().get(url);
-      Thread.sleep(6000);
+      Thread.sleep(7000);
 
       Assert.assertTrue(getDriver().findElement(By.className("stick-footer-panel__container")).isDisplayed());
 
@@ -108,7 +108,7 @@ public class OlgaKhliupinaTest extends BaseTest {
 
       getDriver().manage().window().maximize();
       getDriver().get(url);
-      Thread.sleep(   5000);
+      Thread.sleep(7000);
 
       WebElement menuSupport = getDriver().findElement(By.xpath("//div[@id='support-dropdown']"));
       menuSupport.click();

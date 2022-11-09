@@ -13,7 +13,7 @@ public class RadasIvanTest extends BaseTest {
         String expectedResult = "Paris, FR";
 
         getDriver().get(url);
-        Thread.sleep(5000);
+        Thread.sleep(7000);
 
         WebElement searchCityField = getDriver().findElement(
                 By.xpath("//div[@id = 'weather-widget']//input[@placeholder = 'Search city']")
@@ -50,7 +50,7 @@ public class RadasIvanTest extends BaseTest {
         String expectedResult2 = "OpenWeatherMap API guide - OpenWeatherMap";
 
         getDriver().get(url);
-        Thread.sleep(5000);
+        Thread.sleep(7000);
 
         WebElement buttonGuide = getDriver().findElement(
                 By.xpath("//a[@href = '/guide']")

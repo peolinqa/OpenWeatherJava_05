@@ -12,7 +12,7 @@ public class ElNov686Test extends BaseTest {
         String expectedResult = "Paris, FR";
 
         getDriver().get(url);
-        Thread.sleep(5000);
+        Thread.sleep(7000);
 
         WebElement searchCityField = getDriver().findElement(
                 By.xpath("//div[@id='weather-widget']//input[@placeholder = 'Search city']")
@@ -47,7 +47,7 @@ public class ElNov686Test extends BaseTest {
         String url = "https://openweathermap.org/";
 
         getDriver().get(url);
-        Thread.sleep(5000);
+        Thread.sleep(7000);
         WebElement imperialF = getDriver().findElement(By
                 .xpath("//div[@class='switch-container']//div[text()='Imperial: °F, mph']"));
 

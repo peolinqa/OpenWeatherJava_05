@@ -16,7 +16,7 @@ public class IrynaHryhorivTest extends BaseTest {
         WebElement searchCityField = getDriver().findElement(
                 By.xpath("//div[@id ='weather-widget']//input[@placeholder = 'Search city']" )
         );
-        Thread.sleep(5000);
+        Thread.sleep(7000);
 
         searchCityField.click();
         searchCityField.sendKeys(cityName);
@@ -37,7 +37,7 @@ public class IrynaHryhorivTest extends BaseTest {
                 By.xpath("//div[@id='weather-widget']//h2")
         );
 
-        Thread.sleep(5000);
+        Thread.sleep(2000);
 
         String actualResult = h2CityContryHeader.getText();
         Assert.assertEquals(actualResult, expectedResult);

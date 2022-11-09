@@ -16,7 +16,7 @@ public class AnnaAbgTest extends BaseTest {
         String expectedResult = "Paris, FR";
 
         getDriver().get(BASE_URL);
-        Thread.sleep(5000);
+        Thread.sleep(7000);
 
         WebElement searchCityField = getDriver().findElement(
                 By.xpath("//div[@id = 'weather-widget']//input[@placeholder = 'Search city']")
@@ -34,6 +34,7 @@ public class AnnaAbgTest extends BaseTest {
                 By.xpath("//ul[@class = 'search-dropdown-menu']/li/span[text() = 'Paris, FR ']")
         );
         parisFRChoiceInDropdownMenu.click();
+        Thread.sleep(1000);
 
         WebElement h2CityCountryHeader = getDriver().findElement(
                 By.xpath("//div[@id = 'weather-widget']//h2")

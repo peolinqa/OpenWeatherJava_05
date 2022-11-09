@@ -14,7 +14,7 @@ public class IrynaKolyadaTest extends BaseTest {
         String expectedResult = "Paris, FR";
 
         getDriver().get(url);
-        Thread.sleep(5000);
+        Thread.sleep(7000);
 
         WebElement searchCityField = getDriver().findElement(
                 By.xpath("//div[@id='weather-widget']//input[@placeholder='Search city']"));
@@ -50,7 +50,7 @@ public class IrynaKolyadaTest extends BaseTest {
         String symbolF = "°F";
 
         getDriver().get(url);
-        Thread.sleep(5000);
+        Thread.sleep(7000);
 
         WebElement temperatureF = getDriver().findElement
                 (By.xpath("//div[text()='Imperial: °F, mph']"));
@@ -72,7 +72,7 @@ public class IrynaKolyadaTest extends BaseTest {
         String expectedResult2 = "Manage cookies";
 
         getDriver().get(url);
-        Thread.sleep(3000);
+        Thread.sleep(7000);
         Assert.assertTrue(getDriver().findElement
                 (By.xpath("//div[@id='stick-footer-panel']//div[@class='container']")).isDisplayed());
 

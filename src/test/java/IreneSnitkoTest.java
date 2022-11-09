@@ -23,6 +23,7 @@ public class IreneSnitkoTest extends BaseTest {
 
         WebElement guideMenu = getDriver().findElement(By.linkText(guideMenuText));
         guideMenu.click();
+        Thread.sleep(2000);
 
         String actualResult1 = getDriver().getCurrentUrl();
         String actualResult2 = getDriver().getTitle();

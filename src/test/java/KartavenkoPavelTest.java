@@ -13,7 +13,7 @@ private static final String URL = "https://openweathermap.org/";
     public void testCheckThirtyOrangeButtons() throws InterruptedException {
         int expectedResult = 30;
         getDriver().get(URL);
-        Thread.sleep(5000);
+        Thread.sleep(7000);
         getDriver().findElement(By.xpath("//ul[@id='first-level-nav']//a[@href='/api']")).click();
         List<WebElement> buttonList = getDriver().findElements(By.xpath("//a[contains(@class,'orange')]"));
 

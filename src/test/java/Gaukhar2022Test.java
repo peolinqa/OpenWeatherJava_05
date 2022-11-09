@@ -15,7 +15,7 @@ public class Gaukhar2022Test extends BaseTest {
         String expectedResult = "Paris, FR";
 
         getDriver().get(url);
-        Thread.sleep(5000);
+        Thread.sleep(7000);
 
         WebElement searchCityField = getDriver().findElement(
                 By.xpath("//div[@id = 'weather-widget']//input[@placeholder = 'Search city']")
@@ -53,7 +53,7 @@ public class Gaukhar2022Test extends BaseTest {
 
         getDriver().get(url);
 
-        Thread.sleep(5000);
+        Thread.sleep(7000);
 
         WebElement GuideMenu = getDriver().findElement(
                 By.xpath("//div[@id = 'desktop-menu']/ul/li[1]/a")

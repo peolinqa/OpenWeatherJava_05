@@ -15,7 +15,7 @@ public class GalinaKuklevaTest extends BaseTest {
         String expectedResult = "Paris, FR";
 
         getDriver().get(baseUrl);
-        Thread.sleep(5000);
+        Thread.sleep(7000);
         WebElement searchCityField = getDriver().findElement(
                 By.xpath("//div[@id = 'weather-widget']//input[@placeholder = 'Search city']")
         );
@@ -51,7 +51,7 @@ public class GalinaKuklevaTest extends BaseTest {
         WebElement guideButton = getDriver().findElement(
                 By.xpath("//div[@id = 'desktop-menu']//li/a [@href='/guide']")
         );
-        Thread.sleep(5000);
+        Thread.sleep(7000);
         guideButton.click();
 
         String actualResult_1 = getDriver().getCurrentUrl();
@@ -68,10 +68,12 @@ public class GalinaKuklevaTest extends BaseTest {
         String expectedResult = "°F";
 
         getDriver().get(baseUrl);
+        Thread.sleep(7000);
+
         WebElement imperialData = getDriver().findElement(
                 By.xpath("//div[@id = 'weather-widget']//div[text() = 'Imperial: °F, mph']")
         );
-        Thread.sleep(5000);
+
         imperialData.click();
         WebElement tempInTheCity = getDriver().findElement(
                 By.xpath("//div[@id = 'weather-widget']//span[@class = 'heading']")
@@ -91,10 +93,11 @@ public class GalinaKuklevaTest extends BaseTest {
 
         getDriver().get(baseUrl);
         getDriver().manage().window().maximize();
+        Thread.sleep(7000);
         WebElement supportButton = getDriver().findElement(
                 By.xpath("//div[@id='support-dropdown']")
         );
-        Thread.sleep(5000);
+
         supportButton.click();
         Thread.sleep(5000);
         WebElement subMenuAskAQuestion = getDriver().findElement(
@@ -150,7 +153,7 @@ public class GalinaKuklevaTest extends BaseTest {
         getDriver().get(baseUrl);
         getDriver().manage().window().maximize();
         int expectedResult = 30;
-        Thread.sleep(6000);
+        Thread.sleep(7000);
         WebElement element = getDriver().findElement(
                 By.xpath("//div[@id = 'desktop-menu']//a[text()= 'API']"));
         element.click();

@@ -13,7 +13,7 @@ public class TimberhutOWeatherTest extends BaseTest {
             String expectedResult = "Paris, FR";
 
             getDriver().get("https://openweathermap.org/");
-            Thread.sleep(5000);
+            Thread.sleep(7000);
 
             WebElement seachCityField = getDriver().findElement(
                     By.xpath("//div[@id = 'weather-widget']//input[@placeholder='Search city']")
@@ -37,6 +37,7 @@ public class TimberhutOWeatherTest extends BaseTest {
             WebElement h2CityCountryHeader = getDriver().findElement(
                     By.xpath("//div[@id='weather-widget']//h2")
             );
+            Thread.sleep(2000);
 
             Assert.assertEquals(h2CityCountryHeader.getText(), expectedResult);
         }

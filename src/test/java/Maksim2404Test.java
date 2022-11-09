@@ -12,7 +12,7 @@ public class Maksim2404Test extends BaseTest {
         String expectedResult = "Paris, FR";
 
         getDriver().get(url);
-        Thread.sleep(5000);
+        Thread.sleep(7000);
 
         WebElement searchCityField = getDriver().findElement(
                 By.xpath("//div[@id = 'weather-widget']//input[@placeholder = 'Search city']"));
@@ -51,7 +51,7 @@ public class Maksim2404Test extends BaseTest {
         String expectedResult3 = "Ask a question";
 
         getDriver().get(url);
-        Thread.sleep(5000);
+        Thread.sleep(7000);
 
         WebElement searchButton = getDriver().findElement(
                 By.id("support-dropdown")
@@ -77,7 +77,7 @@ public class Maksim2404Test extends BaseTest {
         );
 
         String actualResult3 = confirm3.getText();
-        Thread.sleep(2000);
+
 
         Assert.assertEquals(actualResult1, expectedResult1);
         Assert.assertEquals(actualResult2, expectedResult2);

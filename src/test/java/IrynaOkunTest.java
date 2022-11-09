@@ -15,7 +15,7 @@ public class IrynaOkunTest extends BaseTest {
         String expectedResult = "Paris, FR";
 
         getDriver().get(url);
-        Thread.sleep(5000);
+        Thread.sleep(7000);
 
         WebElement searchCityField = getDriver().findElement(
                 By.xpath("//input[@placeholder = 'Search city']")
@@ -42,7 +42,6 @@ public class IrynaOkunTest extends BaseTest {
         Thread.sleep(5000);
 
         String actualResult = h2CityCountryNameHeader.getText();
-        Thread.sleep(5000);
 
         Assert.assertEquals(actualResult, expectedResult);
 

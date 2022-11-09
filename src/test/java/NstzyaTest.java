@@ -15,7 +15,7 @@ public class NstzyaTest extends BaseTest {
 
         getDriver().get(url);
         getDriver().manage().window().maximize();
-        Thread.sleep(5000);
+        Thread.sleep(7000);
 
         WebElement searchCityField = getDriver().findElement(
                 By.xpath("//div[@id = 'weather-widget']//input[@placeholder = 'Search city']")
@@ -28,14 +28,14 @@ public class NstzyaTest extends BaseTest {
         );
         searchButton.click();
 
-        Thread.sleep(5000);
+        Thread.sleep(1000);
 
         WebElement parisFRChoiceInDropdownMenu = getDriver().findElement(//ищем элемент страницы по заранее построенному XPath
                 By.xpath("//ul[@class = 'search-dropdown-menu']/li/span[text() = 'Paris, FR ']")
         );
         parisFRChoiceInDropdownMenu.click();
 
-        Thread.sleep(5000);
+        Thread.sleep(2000);
 
         WebElement h2CityCountryHeader = getDriver().findElement(
                 By.xpath("//div[@id = 'weather-widget']//h2")

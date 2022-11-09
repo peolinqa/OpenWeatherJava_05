@@ -14,7 +14,7 @@ public class GordonWhiteTest extends BaseTest {
         String expectedResult = "Paris, FR";
 
         getDriver().get(url);
-        Thread.sleep(5000);
+        Thread.sleep(7000);
 
         WebElement searchCityField = getDriver().findElement(
                 By.xpath("//div[@id = 'weather-widget']//input[@placeholder = 'Search city']")
@@ -50,7 +50,7 @@ public class GordonWhiteTest extends BaseTest {
         boolean expectedResult = true;
 
         getDriver().get(url);
-        Thread.sleep(5000);
+        Thread.sleep(7000);
 
         WebElement searchCityField = getDriver().findElement(
                 By.xpath("//ul[@id='first-level-nav']//input[@type='text']")

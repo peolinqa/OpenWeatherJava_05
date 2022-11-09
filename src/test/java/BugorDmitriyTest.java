@@ -19,7 +19,7 @@ public class BugorDmitriyTest extends BaseTest {
         getDriver().manage().deleteAllCookies();
         getDriver().manage().window().maximize();
 
-        Thread.sleep(6000);
+        Thread.sleep(7000);
 
         WebElement searchCityField = getDriver().findElement(
                 By.xpath("//div[@id='weather-widget']//input[@placeholder='Search city']")

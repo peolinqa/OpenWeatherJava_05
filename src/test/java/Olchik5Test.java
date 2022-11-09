@@ -14,19 +14,19 @@ public class Olchik5Test extends BaseTest {
         String expectedResult = "Paris, FR";
 
         getDriver().get(url);
-        Thread.sleep(5000);
+        Thread.sleep(7000);
 
         WebElement searchCityField = getDriver().findElement(
                 By.xpath("//div[@id='weather-widget']//input[@placeholder='Search city']")
         );
         searchCityField.click();
         searchCityField.sendKeys(cityName);
-        Thread.sleep(5000);
+        Thread.sleep(1000);
 
         WebElement searchButton = getDriver().findElement(By.xpath("//button[@type='submit']"));
         searchButton.click();
 
-        Thread.sleep(5000);
+        Thread.sleep(1000);
 
         WebElement parisFRChoiceInDropdownMenu = getDriver().findElement(
                 By.xpath("//ul[@class='search-dropdown-menu']/li/span[text()='Paris, FR ']"));

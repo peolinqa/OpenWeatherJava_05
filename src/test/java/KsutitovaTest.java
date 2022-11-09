@@ -14,12 +14,13 @@ public class KsutitovaTest extends BaseTest {
         String expectedResultUrl = "https://openweathermap.org/guide";
 
         getDriver().get(url);
+        Thread.sleep(7000);
 
         WebElement menuGuide = getDriver().findElement(
                 By.xpath("//div[@id='desktop-menu']/ul/li/a[@href='/guide']")
         );
 
-        Thread.sleep(5000);
+
         menuGuide.click();
 
         String urlGuede = getDriver().getCurrentUrl();
@@ -36,7 +37,7 @@ public class KsutitovaTest extends BaseTest {
         String url = "https://openweathermap.org/";
 
         getDriver().get(url);
-        Thread.sleep(5000);
+        Thread.sleep(7000);
 
         WebElement imperialF = getDriver().findElement(
                 By.xpath("//div[text()='Imperial: °F, mph']")

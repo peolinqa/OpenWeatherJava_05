@@ -12,7 +12,7 @@ public class aidai001Test extends BaseTest {
                 String expectedResult = "Paris, FR";
 
                 getDriver().get(url);
-                Thread.sleep(5000);
+                Thread.sleep(7000);
 
                 WebElement searchCityField = getDriver().findElement(
                         By.xpath("//div[@id='weather-widget']//input[@placeholder = 'Search city']")
@@ -31,6 +31,7 @@ public class aidai001Test extends BaseTest {
                         By.xpath("//ul[@class = 'search-dropdown-menu']/li/span[text ()= 'Paris, FR ']")
                 );
                 parisFRChoiceInDropDownMenu.click();
+                Thread.sleep(1000);
 
                 WebElement h2CityNameHeader = getDriver().findElement(
                         By.xpath("//div[@id = 'weather-widget']//h2")

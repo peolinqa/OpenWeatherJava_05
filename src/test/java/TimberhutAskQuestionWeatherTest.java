@@ -14,7 +14,7 @@ public class TimberhutAskQuestionWeatherTest extends BaseTest {
         String message = "How to start question";
 
         getDriver().get("https://openweathermap.org/");
-        Thread.sleep(5000);
+        Thread.sleep(7000);
         WebElement supportMenu = getDriver().findElement(
                 By.xpath("//div[@id='support-dropdown']")
         );

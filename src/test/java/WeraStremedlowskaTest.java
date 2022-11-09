@@ -15,7 +15,7 @@ public class WeraStremedlowskaTest extends BaseTest {
         String expectedResult = "Paris, FR";
 
         getDriver().get(url);
-        Thread.sleep(5000);
+        Thread.sleep(7000);
 
         WebElement searchCityField = getDriver().findElement(
                 By.xpath("//div[@id='weather-widget']//input[@placeholder='Search city']")
@@ -53,7 +53,7 @@ public class WeraStremedlowskaTest extends BaseTest {
         String expectedResult = "https://openweathermap.org/";
 
         getDriver().get(url);
-        Thread.sleep(5000);
+        Thread.sleep(7000);
 
         getDriver().findElement(
                 By.xpath("//ul/li/a/img[@src='/themes/openweathermap/assets/img/logo_white_cropped.png']")).click();

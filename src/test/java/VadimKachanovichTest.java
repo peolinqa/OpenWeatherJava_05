@@ -14,7 +14,7 @@ public class VadimKachanovichTest extends BaseTest {
 
         getDriver().get(url);
         getDriver().manage().window().maximize();
-        Thread.sleep(5000);
+        Thread.sleep(7000);
 
         WebElement searchCityField = getDriver().findElement(
                 By.xpath("//div[@id = 'weather-widget']//input[@placeholder = 'Search city']")
@@ -50,10 +50,11 @@ public class VadimKachanovichTest extends BaseTest {
         String expectedTitle = "OpenWeatherMap API guide - OpenWeatherMap";
 
         getDriver().get(url);
+        Thread.sleep(7000);
         WebElement guideTab = getDriver().findElement(
                 By.xpath("//div[@id='desktop-menu']//li/a[@href='/guide']")
         );
-        Thread.sleep(5000);
+
         guideTab.click();
         Thread.sleep(2000);
         String actualGuideLink = getDriver().getCurrentUrl();

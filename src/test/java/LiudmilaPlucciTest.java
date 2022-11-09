@@ -50,7 +50,7 @@ public class LiudmilaPlucciTest extends BaseTest {
         String expectedResult2 = "OpenWeatherMap API guide - OpenWeatherMap";
 
         getDriver().get(url);
-        Thread.sleep(5000);
+        Thread.sleep(7000);
 
         WebElement ButtonGuide = getDriver().findElement(
                 By.xpath("//a[@href='/guide']"));

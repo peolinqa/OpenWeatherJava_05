@@ -34,7 +34,7 @@ public class IriSamoTest extends BaseTest {
         WebElement h2CityCountryHeader = getDriver().findElement(
                 By.xpath("//div[@id=\"weather-widget\"]//h2")
         );
-        Thread.sleep(1000);
+        Thread.sleep(2000);
 
         String actualResult = h2CityCountryHeader.getText();
 

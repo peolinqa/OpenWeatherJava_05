@@ -22,7 +22,7 @@ public class ViktoriyaEDTest extends BaseTest {
         String expectedResult = "Paris, FR";
 
         getDriver().get(url);
-        Thread.sleep(6000);
+        Thread.sleep(7000);
 
         WebElement searchCityField = getDriver().findElement(
                 By.xpath("//div[@id = 'weather-widget']//input[@placeholder = 'Search city']")
@@ -44,7 +44,7 @@ public class ViktoriyaEDTest extends BaseTest {
 
         WebElement h2CityNameHeader = getDriver().findElement(By.xpath("//div[@id = 'weather-widget']//h2"));
 
-        Thread.sleep(1000);
+        Thread.sleep(2000);
 
         String actualResult = h2CityNameHeader.getText();
 
@@ -60,7 +60,7 @@ public class ViktoriyaEDTest extends BaseTest {
 
         getDriver().get(url);
         getDriver().manage().window().maximize();
-        Thread.sleep(6000);
+        Thread.sleep(7000);
         getDriver().findElement(By.xpath("//a[@href = '/guide']")).click();
 
         Assert.assertEquals(getDriver().getCurrentUrl(), expectedResult);
@@ -74,7 +74,7 @@ public class ViktoriyaEDTest extends BaseTest {
         String expectedResult = "°F";
 
         getDriver().get(url);
-        Thread.sleep(6000);
+        Thread.sleep(7000);
 
         getDriver().findElement(By.xpath("//div[@class='switch-container']/div[3]")).click();
         WebElement weatherInF = getDriver().findElement(By.xpath("//span[@class='heading']"));
@@ -94,7 +94,7 @@ public class ViktoriyaEDTest extends BaseTest {
         String expectedResult3 = "Manage cookies";
 
         getDriver().get(url);
-        Thread.sleep(6000);
+        Thread.sleep(7000);
 
         Assert.assertTrue(getDriver().findElement(By.className("stick-footer-panel__container")).isDisplayed());
 
@@ -122,7 +122,7 @@ public class ViktoriyaEDTest extends BaseTest {
 
         getDriver().get(url);
         getDriver().manage().window().maximize();
-        Thread.sleep(6000);
+        Thread.sleep(7000);
 
         WebElement menuSupportDropDown = getDriver().findElement(By.xpath("//div[@id='support-dropdown']"));
         menuSupportDropDown.click();
@@ -153,7 +153,7 @@ public class ViktoriyaEDTest extends BaseTest {
 
         getDriver().get(url);
         getDriver().manage().window().maximize();
-        Thread.sleep(6000);
+        Thread.sleep(7000);
 
         getDriver().findElement(By.xpath("//div[@id='support-dropdown']")).click();
         getDriver().findElement(By.linkText("Ask a question")).click();
@@ -181,7 +181,7 @@ public class ViktoriyaEDTest extends BaseTest {
         Boolean expectedResult = true;
 
         getDriver().get(url);
-        Thread.sleep(5000);
+        Thread.sleep(7000);
 
         getDriver().findElement(By.xpath("//div[text()='Imperial: °F, mph']")).click();
         WebElement displayCurrentWeather = getDriver().findElement(By.xpath("//div[@class='current-temp']/span"));

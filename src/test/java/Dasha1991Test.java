@@ -16,7 +16,7 @@ public class Dasha1991Test extends BaseTest {
         String expectedResult2 = "OpenWeatherMap API guide - OpenWeatherMap";
 
         getDriver().get(url);
-        Thread.sleep(5000);
+        Thread.sleep(7000);
 
         WebElement pushButtonGuide = getDriver().findElement(By.xpath("//a[@href = '/guide']"));
 
@@ -38,7 +38,7 @@ public class Dasha1991Test extends BaseTest {
 
         getDriver().get(url);
         getDriver().manage().window().maximize();
-        Thread.sleep(5000);
+        Thread.sleep(7000);
 
         WebElement temperatureF = getDriver().findElement(By.xpath("//div[@class = 'option'][2]"));
 

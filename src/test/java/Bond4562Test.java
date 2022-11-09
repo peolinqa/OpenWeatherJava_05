@@ -15,12 +15,13 @@ public class Bond4562Test extends BaseTest {
 
         getDriver().get(urlBase);
 
-        Thread.sleep(5000);
+        Thread.sleep(7000);
 
 
         getDriver().findElement(
                 By.xpath("//nav[@id='nav-website']//div[@id='desktop-menu']//a[@href='/guide']")
         ).click();
+        Thread.sleep(2000);
 
         String actualResultUrl = getDriver().getCurrentUrl();
         String actualResultTitle = getDriver().getTitle();

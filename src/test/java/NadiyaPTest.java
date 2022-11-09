@@ -15,7 +15,7 @@ public class NadiyaPTest extends BaseTest {
         String expectedResult = "Paris, FR";
 
         getDriver().get(url);
-        Thread.sleep(5000);
+        Thread.sleep(7000);
 
         WebElement searchCityField = getDriver().findElement(
                 By.xpath("//div[@id = 'weather-widget']//input[@placeholder = 'Search city']"));
@@ -26,7 +26,7 @@ public class NadiyaPTest extends BaseTest {
         WebElement searchButton = getDriver().findElement(By.xpath("//button[@type=\"submit\"]"));
         searchButton.click();
 
-        Thread.sleep(5000);
+        Thread.sleep(1000);
 
         WebElement parisFirstChoiceInDropDownMenu = getDriver().findElement(
                 By.xpath("//ul[@class = 'search-dropdown-menu']/li/span[text() = 'Paris, FR ']"));
@@ -38,7 +38,7 @@ public class NadiyaPTest extends BaseTest {
 
 
         String actualResult = h2CityCountryheader.getText();
-        Thread.sleep(5000);
+
         Assert.assertEquals(actualResult,expectedResult);
 
 

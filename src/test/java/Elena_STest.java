@@ -12,10 +12,11 @@ public class Elena_STest extends BaseTest {
         String expectedResult = "Paris, FR";
 
         getDriver().get(url);
+        Thread.sleep(7000);
+
         WebElement searchCityField = getDriver().findElement(
                 By.xpath("//div[@id=\"weather-widget\"]//input[@placeholder='Search city']")
         );
-        Thread.sleep(5000);
         searchCityField.click();
         searchCityField.sendKeys(cityName);
 
@@ -41,10 +42,12 @@ public class Elena_STest extends BaseTest {
     public void testTemperatureFormatSelectionInFahrenheit() throws InterruptedException {
         String url = "https://openweathermap.org/";
         getDriver().get(url);
+
+        Thread.sleep(7000);
         WebElement switchToFahrenheit = getDriver().findElement(
                 By.xpath("//div[@class='option'][text()='Imperial: °F, mph']")
         );
-        Thread.sleep(5000);
+
         switchToFahrenheit.click();
         char expectedResult = 'F';
         WebElement findFahrenheit = getDriver().findElement(
@@ -63,10 +66,11 @@ public class Elena_STest extends BaseTest {
         String expectedResult = "OpenWeatherMap API guide - OpenWeatherMap";
         getDriver().get(url);
         getDriver().manage().window().maximize();
+        Thread.sleep(7000);
         WebElement searchButtonGUid = getDriver().findElement(
                 By.xpath("//div[@id='desktop-menu']/ul/li/a[@href='/guide']")
         );
-        Thread.sleep(5000);
+
         searchButtonGUid.click();
         String actualResultURL = getDriver().getCurrentUrl();
         String actualResult = getDriver().getTitle();
@@ -76,9 +80,10 @@ public class Elena_STest extends BaseTest {
     }
 
     @Test
-    public void testApprovinfButtonsAllow_allAndManage_cookies(){
+    public void testApprovinfButtonsAllow_allAndManage_cookies() throws InterruptedException {
         String url = "https://openweathermap.org/";
         getDriver().get(url);
+        Thread.sleep(7000);
         String expectedResultPanelText = "We use cookies which are essential for the site to work. We also use non-essential" +
                 " cookies to help us improve our services. Any data collected is anonymised. You can allow all cookies" +
                 " or manage them individually.";

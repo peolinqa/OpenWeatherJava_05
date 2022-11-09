@@ -13,7 +13,7 @@ public class EkaterinaChernyshovaTest extends BaseTest {
         String expectedResult = "Paris, FR";
 
         getDriver().get(url);
-        Thread.sleep(5000);
+        Thread.sleep(7000);
 
         WebElement searchCityField = getDriver().findElement(
                 By.xpath("//div[@id='weather-widget']//input[@placeholder='Search city']")
@@ -25,7 +25,7 @@ public class EkaterinaChernyshovaTest extends BaseTest {
                 By.xpath("//div[@id='weather-widget']//button[@type='submit']")
         );
         searchButton.click();
-        Thread.sleep(5000);
+        Thread.sleep(2000);
 
         WebElement cityChoiceInDropDownMenu = getDriver().findElement(
                 By.xpath("//ul[@class = 'search-dropdown-menu']/li/span[text() = 'Paris, FR ']")
@@ -35,12 +35,10 @@ public class EkaterinaChernyshovaTest extends BaseTest {
         WebElement H2CityNameHeader = getDriver().findElement(
                 By.xpath("//div[@id = 'weather-widget']//h2")
         );
-        Thread.sleep(4000);
+        Thread.sleep(2000);
         String actualResult = H2CityNameHeader.getText();
 
-        Thread.sleep(1000);
-        Assert.assertEquals(actualResult, expectedResult);
 
-        getDriver().quit();
+        Assert.assertEquals(actualResult, expectedResult);
     }
 }

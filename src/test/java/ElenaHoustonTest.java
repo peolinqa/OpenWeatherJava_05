@@ -14,7 +14,7 @@ public class ElenaHoustonTest extends BaseTest {
         String expectedResult = "Paris, FR";
 
         getDriver().get(url);
-        Thread.sleep(5000);
+        Thread.sleep(7000);
 
         WebElement searchCityField = getDriver().findElement(
                 By.xpath("//div[@id='weather-widget']//input[@placeholder='Search city']")
@@ -22,21 +22,17 @@ public class ElenaHoustonTest extends BaseTest {
         searchCityField.click();
         searchCityField.sendKeys(cityName);
 
-        Thread.sleep(5000);
 
         WebElement searchButton = getDriver().findElement(
                 By.xpath("//div[@id='weather-widget']//button[@type='submit']")
         );
         searchButton.click();
 
-        Thread.sleep(2000);
-
         WebElement parisFRChoice = getDriver().findElement(
                 By.xpath("//ul[@class='search-dropdown-menu']//li//span[text() = 'Paris, FR ']")
         );
         parisFRChoice.click();
 
-        Thread.sleep(5000);
 
         WebElement h2CityCountryHeader = getDriver().findElement(
                 By.xpath("//div[@id = 'weather-widget']//h2")
@@ -57,10 +53,11 @@ public class ElenaHoustonTest extends BaseTest {
         String expectedResult2 = "OpenWeatherMap API guide - OpenWeatherMap";
 
         getDriver().get(url);
-        Thread.sleep(5000);
+        Thread.sleep(7000);
 
         WebElement guideMenu = getDriver().findElement(By.linkText(guideMenuText));
         guideMenu.click();
+        Thread.sleep(2000);
 
         String actualResult1 = getDriver().getCurrentUrl();
         String actualResult2 = getDriver().getTitle();
@@ -77,7 +74,7 @@ public class ElenaHoustonTest extends BaseTest {
 
         getDriver().get(url);
         getDriver().manage().window().maximize();
-        Thread.sleep(5000);
+        Thread.sleep(7000);
 
         WebElement pushImperialFahrenheit = getDriver().findElement(By.xpath("//div[@class = 'switch-container']//div"
                 + "[text()= 'Imperial: °F, mph']")
