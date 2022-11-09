@@ -93,4 +93,30 @@ public class IrynaKolyadaTest extends BaseTest {
         Assert.assertEquals(buttonManageCookiesFooter.getText(), expectedResult2);
     }
 
+    @Test
+    public void testCheckSubmenuSupport() throws InterruptedException {
+        getDriver().get("https://openweathermap.org/");
+        Thread.sleep(3000);
+
+        WebElement headerButtonSuppot = getDriver().findElement(By.id("support-dropdown"));
+        Thread.sleep(2000);
+        headerButtonSuppot.click();
+        Assert.assertEquals(getDriver().findElements
+                (By.xpath("//ul[@id='support-dropdown-menu']/li")).size(),3);
+
+        WebElement supportMenuFAQ = getDriver().findElement
+                (By.xpath("//ul[@id='support-dropdown-menu']//a[@href='/faq']"));
+        Assert.assertEquals(supportMenuFAQ.getText(),"FAQ");
+        Thread.sleep(1000);
+
+        WebElement supportMenuHowToStart = getDriver().findElement
+                (By.xpath("//ul[@id='support-dropdown-menu']//a[@href='/appid']"));
+        Assert.assertEquals(supportMenuHowToStart.getText(),"How to start");
+
+        Thread.sleep(2000);
+        WebElement supportMenuAskQuestion = getDriver().findElement
+                (By.xpath("//ul[@id='support-dropdown-menu']//a[@target='_blank']"));
+        Assert.assertEquals(supportMenuAskQuestion.getText(),"Ask a question");
+    }
+
 }
